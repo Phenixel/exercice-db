@@ -44,15 +44,11 @@
 <row name="date" null="1" autoincrement="0">
 <datatype>DATE</datatype>
 <default>NULL</default></row>
-<row name="id_week" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Week" row="id" />
-</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="719" y="62" name="date_heure">
+<table x="719" y="62" name="hours">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -66,18 +62,25 @@
 <part>id</part>
 </key>
 </table>
-<table x="759" y="247" name="Subject">
+<table x="765" y="223" name="Subject">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="name" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
+<row name="id_UE" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="UE" row="id" />
+</row>
+<row name="max_hours" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="807" y="414" name="Teacher">
+<table x="1077" y="452" name="Teacher">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -91,17 +94,6 @@
 <part>id</part>
 </key>
 </table>
-<table x="276" y="301" name="Week">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="nmb_week" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
 <table x="459" y="171" name="Lessons">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
@@ -110,17 +102,9 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Date" row="id" />
 </row>
-<row name="id_date_hour" null="1" autoincrement="0">
+<row name="id_hour" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="date_heure" row="id" />
-</row>
-<row name="id_subject" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Subject" row="id" />
-</row>
-<row name="id_teacher" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Teacher" row="id" />
+<default>NULL</default><relation table="hours" row="id" />
 </row>
 <row name="nmb_Lessons" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -129,16 +113,56 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Classes" row="id" />
 </row>
+<row name="id_Subject" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Subject" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="466" y="456" name="Classes">
+<table x="367" y="460" name="Classes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="lbl_classes" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="995" y="266" name="UE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="qoef" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="max_hours" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="761" y="403" name="Intervention">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="id_Teacher" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Teacher" row="id" />
+</row>
+<row name="id_Subject" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Subject" row="id" />
+</row>
+<row name="hour_max" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
